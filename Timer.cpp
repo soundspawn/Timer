@@ -32,11 +32,22 @@
 Timer::Timer(void)
 {
     //Default to 10 events
-    Timer(10);
+    initEventArray(10);
 }
 
 Timer::Timer(unsigned int max){
-    _events = (Event*) malloc (max * sizeof(Event));
+    initEventArray(max);
+}
+
+Timer::~Timer(){
+    free(_events);
+}
+
+void Timer::initEventArray(unsigned int max){
+    _events = (Event*) calloc(max,sizeof(Event));
+    for(int i=0;i<max;i++){
+        _events[i].eventType = 0;
+    }
     max_events = max;
 }
 
