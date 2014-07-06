@@ -44,9 +44,9 @@ Timer::~Timer(){
 }
 
 void Timer::initEventArray(unsigned int max){
-    _events = (Event*) calloc(max,sizeof(Event));
+    _events = (Event*) malloc(max*sizeof(Event));
     for(int i=0;i<max;i++){
-        _events[i].eventType = 0;
+        _events[i] = Event();
     }
     max_events = max;
 }
