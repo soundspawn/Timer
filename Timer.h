@@ -36,6 +36,7 @@ class Timer
 
 public:
   Timer(void);
+  Timer(unsigned int);
 
   int8_t every(unsigned long period, void (*callback)(void));
   int8_t every(unsigned long period, void (*callback)(void), int repeatCount);
@@ -59,7 +60,8 @@ public:
   void update(unsigned long now);
 
 protected:
-  Event _events[MAX_NUMBER_OF_EVENTS];
+  Event* _events;
+  unsigned int max_events;
   int8_t findFreeEventIndex(void);
 
 };
