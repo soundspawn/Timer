@@ -51,7 +51,7 @@ void Timer::initEventArray(unsigned int max){
     max_events = max;
 }
 
-int8_t Timer::every(unsigned long period, void (*callback)(), int repeatCount)
+int8_t Timer::every(unsigned long period, void (*callback)(byte), int repeatCount)
 {
 	int8_t i = findFreeEventIndex();
 	if (i == -1) return -1;
@@ -65,12 +65,12 @@ int8_t Timer::every(unsigned long period, void (*callback)(), int repeatCount)
 	return i;
 }
 
-int8_t Timer::every(unsigned long period, void (*callback)())
+int8_t Timer::every(unsigned long period, void (*callback)(byte))
 {
 	return every(period, callback, -1); // - means forever
 }
 
-int8_t Timer::after(unsigned long period, void (*callback)())
+int8_t Timer::after(unsigned long period, void (*callback)(byte))
 {
 	return every(period, callback, 1);
 }
@@ -139,7 +139,7 @@ void Timer::update(unsigned long now)
 	{
 		if (_events[i].eventType != EVENT_NONE)
 		{
-			_events[i].update(now);
+			_events[i].update(now,i);
 		}
 	}
 }

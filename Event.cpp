@@ -37,10 +37,10 @@ Event::Event(void)
 void Event::update(void)
 {
     unsigned long now = millis();
-    update(now);
+    update(now,255);
 }
 
-void Event::update(unsigned long now)
+void Event::update(unsigned long now,byte callbackID)
 {
 	if (now - lastEventTime >= period)
 	{
@@ -54,7 +54,7 @@ void Event::update(unsigned long now)
 		switch (eTemp)
 		{
 			case EVENT_EVERY:
-				(*callback)();
+				(*callback)(callbackID);
 				break;
 
 			case EVENT_OSCILLATE:

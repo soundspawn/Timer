@@ -40,9 +40,9 @@ public:
   ~Timer(void);
   void initEventArray(unsigned int);
 
-  int8_t every(unsigned long period, void (*callback)(void));
-  int8_t every(unsigned long period, void (*callback)(void), int repeatCount);
-  int8_t after(unsigned long duration, void (*callback)(void));
+  int8_t every(unsigned long period, void (*callback)(byte));
+  int8_t every(unsigned long period, void (*callback)(byte), int repeatCount);
+  int8_t after(unsigned long duration, void (*callback)(byte));
   int8_t oscillate(uint8_t pin, unsigned long period, uint8_t startingValue);
   int8_t oscillate(uint8_t pin, unsigned long period, uint8_t startingValue, int repeatCount);
   

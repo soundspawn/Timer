@@ -35,13 +35,13 @@ class Event
 public:
   Event(void);
   void update(void);
-  void update(unsigned long now);
+  void update(unsigned long now,byte callbackID);
   int8_t eventType;
   unsigned long period;
   int repeatCount;
   uint8_t pin;
   uint8_t pinState;
-  void (*callback)(void);
+  void (*callback)(byte);
   unsigned long lastEventTime;
   int count;
 };
