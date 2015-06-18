@@ -127,6 +127,16 @@ void Timer::stop(int8_t id)
 	}
 }
 
+uint8_t Timer::changePeriod(int8_t id, unsigned long newperiod)
+{
+	if (id >= 0 && id < max_events && _events[id].eventType != EVENT_NONE)
+	{
+		_events[id].period = newperiod;
+		return id;
+	}
+	return TIMER_NOT_AN_EVENT;
+}
+
 void Timer::update(void)
 {
 	unsigned long now = millis();
