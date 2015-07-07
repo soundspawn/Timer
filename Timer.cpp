@@ -137,6 +137,10 @@ uint8_t Timer::changePeriod(int8_t id, unsigned long newperiod)
 	return TIMER_NOT_AN_EVENT;
 }
 
+void* Timer::getCallback(int8_t id){
+	return (void*)_events[id].callback;
+}
+
 void Timer::update(void)
 {
 	unsigned long now = millis();
